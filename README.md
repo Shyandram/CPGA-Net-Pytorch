@@ -1,4 +1,4 @@
-# Implementation of "A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction"
+# A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction
 
 This is the implementation of CPGA-Net based on Pytorch.
 "A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction"
