@@ -1,4 +1,4 @@
-# Official Implementation of "A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction"
+# Implementation of "A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction"
 
 This is the implementation of CPGA-Net based on Pytorch.
 "A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction"
@@ -11,6 +11,7 @@ This is the implementation of CPGA-Net based on Pytorch.
 2. install [Pytorch](https://pytorch.org/)
 3. execute the following instruction: 
 ```
+// python=3.8
 pip install -r requirements.txt
 ```
 4. make sure these modules have been successfully installed
