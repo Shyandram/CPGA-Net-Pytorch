@@ -162,3 +162,14 @@ Flops and Inference time per image were using a input with 600×400×3 random ge
 # Acknowledge
 Lots of code were borrowed from [pytorch version of AOD-Net](https://github.com/walsvid/AOD-Net-PyTorch)  
 Evaluation code was borrowed from [HWMNet](https://github.com/FanChiMao/HWMNet.git)
+
+```
+@misc{weng2024lightweight,
+      title={A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction}, 
+      author={Shyang-En Weng and Shaou-Gang Miaou and Ricky Christanto},
+      year={2024},
+      eprint={2402.18147},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV}
+}
+```
