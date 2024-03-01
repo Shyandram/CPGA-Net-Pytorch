@@ -1,11 +1,11 @@
 # A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction
 
 This is the implementation of CPGA-Net based on Pytorch.  
-Journal Paper (submitted) "A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction"  
+Journal Paper (submitted) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](http://arxiv.org/abs/2402.18147)
 Conference Paper (submitted) "Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model"  
 
 # News
-
+* 2024/02/29 Preprint released 
 * 2023/11/17 Upload repository
 # Preparation
 1. clone the project
@@ -27,6 +27,7 @@ pip install -r requirements.txt
 Prepare your data, split it into Low-Light images and Normal Light images, both image folder should be paired and the same pair of images should be have the same name. It should be almost the same as original listing way.
 
 ## Train
+the training of CPGA-DGF (DGF) with knowledge distillation is not available in current version.
 ```
 python train.py  \
     "--epochs", "10" , \
@@ -123,9 +124,10 @@ python evaluation.py \
     "--dataset_type", "LOL-v1",
 ```
 ## Weights
+The weights provided are not optimal solutions mentioned in the paper. Only for testing.
 CPGA-Net
 ```
-weights/enhance_color-llie-ResCBAM_g-vggloss.pkl
+weights/enhance_color-llie-ResCBAM_g.pkl
 ```
 CPGA-Net (DGF)
 ```
@@ -135,12 +137,12 @@ weights/enhance_color-llie-ResCBAM_g-8-DGF.pkl
 The metrics were calculated by The evaluation code from [HWMNet
 ](https://github.com/FanChiMao/HWMNet.git)  
 Flops were calculated by [fvcore](https://github.com/facebookresearch/fvcore)
-Flops and Inference time were using a input with 600×400×3 random generated tensor for testing with GPU Nvidia GeForce 3090
+Flops and Inference time per image were using a input with 600×400×3 random generated tensor for testing with GPU Nvidia GeForce 3090
 ## LOL-Test(15 pics)
 |      | PSNR (dB)| SSIM  | LPIPS |Flops(G) | Params(M) | Inference Speed|
 | ---- | ----  | ----  |  ---- | ----   | ---- | ---- |
-|  CPGA-Net   |20.00  | 0.714 | 0.284 | 6.0324 |  0.0415  | 40.284 |
-|  CPGA-Net (DGF)   |19.59  | 0.708 | 1.514 | 1.0970 |  0.0184 | 5.158 |
+|  CPGA-Net   |20.00  | 0.714 | 0.284 | 6.0324 |  0.0415  | 28.256 |
+|  CPGA-Net (DGF)   |19.79  | 0.695 | 0.302 | 1.0970 |  0.0184 | 6.090|
 
 ![](Img/sample.jpg)
 
@@ -152,11 +154,11 @@ Flops and Inference time were using a input with 600×400×3 random generated te
 |  CPGA-Net (DGF)  |  3.8272|	3.834|	3.4975	|2.2336	|3.0361|	3.286|
 
 ## Exposure Error (avg)
-|      | PSNR (dB)| SSIM  | LPIPS |
-| ---- | ----  | ----  |  ---- | 
-|  CPGA-Net   | 19.90  | 0.809 | 0.184 | 
+|      | PSNR (dB)| SSIM  | LPIPS | PI |
+| ---- | ----  | ----  |  ---- | ---- |
+|  CPGA-Net   | 19.90  | 0.809 | 0.184 | 2.428 |
 
 
 # Acknowledge
 Lots of code were borrowed from [pytorch version of AOD-Net](https://github.com/walsvid/AOD-Net-PyTorch)  
-Evaluation code was borrowed from [HWMNet](https://github.com/walsvid/AOD-Net-PyTorch)
+Evaluation code was borrowed from [HWMNet](https://github.com/FanChiMao/HWMNet.git)
