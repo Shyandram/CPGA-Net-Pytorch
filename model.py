@@ -1,9 +1,39 @@
-from typing import Any
 import torch
 import torch.nn as nn
+from torch import Tensor
 import torch.nn.functional as F
-from kornia.color import rgb_to_y
 from guided_filter_pytorch.guided_filter import FastGuidedFilter
+
+# from kornia.color import rgb_to_y
+def _rgb_to_y(r: Tensor, g: Tensor, b: Tensor) -> Tensor:
+    y: Tensor = 0.299 * r + 0.587 * g + 0.114 * b
+    return y
+
+def rgb_to_y(image: Tensor) -> Tensor:
+    r"""Convert an RGB image to Y.
+
+    Args:
+        image: RGB Image to be converted to Y with shape :math:`(*, 3, H, W)`.
+
+    Returns:
+        Y version of the image with shape :math:`(*, 1, H, W)`.
+
+    Examples:
+        >>> input = torch.rand(2, 3, 4, 5)
+        >>> output = rgb_to_y(input)  # 2x1x4x5
+    """
+    if not isinstance(image, Tensor):
+        raise TypeError(f"Input type is not a Tensor. Got {type(image)}")
+
+    if len(image.shape) < 3 or image.shape[-3] != 3:
+        raise ValueError(f"Input size must have a shape of (*, 3, H, W). Got {image.shape}")
+
+    r: Tensor = image[..., 0:1, :, :]
+    g: Tensor = image[..., 1:2, :, :]
+    b: Tensor = image[..., 2:3, :, :]
+
+    y: Tensor = _rgb_to_y(r, g, b)
+    return y
 
 class LAL_BDP(nn.Module):
     def __init__(self, n_channels=8):
@@ -97,7 +127,6 @@ class enhance_color(nn.Module):
        
         self.conv1_post_g = nn.Conv2d(in_channels=6, out_channels=16, kernel_size=1, stride=1, padding=0)
         self.conv2_post_g = ResBlock(conv=default_conv, n_feats=16, kernel_size=3)
-        # self.conv2_post_g = ECABasicBlock(16, 16)
         self.conv3_post_g = nn.Conv2d(in_channels=16, out_channels=3, kernel_size=1, stride=1, padding=0)
 
         # LLIE
@@ -110,7 +139,6 @@ class enhance_color(nn.Module):
 
 
     def __call__(self, x, gamma_pre = 0, ext=False, isvid=False, get_all=False):
-        # Colour_correction
 
         if self.gf:
             xx = x
