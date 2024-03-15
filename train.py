@@ -9,8 +9,6 @@ import torch.utils.data
 import torchvision
 from torchvision import transforms
 from tensorboardX import SummaryWriter
-# import pytorch_ssim
-# from math import log10
 
 from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity as LPIPS
 from torchmetrics import StructuralSimilarityIndexMeasure as SSIM
@@ -19,7 +17,7 @@ from torchmetrics import PeakSignalNoiseRatio as PSNR
 from loss import VGGLoss
 from model import enhance_color
 from data import LLIEDataset
-from utils import weight_init# , logger, 
+from utils import weight_init
 from config import get_config
 
 # @logger
@@ -136,11 +134,7 @@ def main(cfg):
             LLIE_image = network(LL_image,)
             recon_loss = criterion(LLIE_image, ori_image) 
             vgg_loss = vggloss(LLIE_image, ori_image)
-            # ori_recon_loss = mseloss(rgb_to_lab(LLIE_image), rgb_to_lab(ori_image))
-            # hep_loss = percept_loss(LLIE_image, ori_image)
-            # hp_loss = hist_loss(LLIE_image, ori_image)
-            # ssim_loss = 1 - ssim(LLIE_image, ori_image)
-            loss =  recon_loss+ 1e-2 * vgg_loss  #recon_loss +1e-2 * hp_loss #+ 0.5 * ori_recon_loss
+            loss =  recon_loss+ 1e-2 * vgg_loss
             total_loss = total_loss + loss.item()
 
             optimizer.zero_grad()
