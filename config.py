@@ -3,13 +3,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--ori_data_path', type=str, default='ori',  help='Origin image path')
-parser.add_argument('--haze_data_path', type=str, default='haze',  help='Haze image path')
+parser.add_argument('--haze_data_path', type=str, default='haze',  help='Haze image path')\
 
-parser.add_argument('--ad_ori_data_path', type=str, help='additional Origin image path', default='/Users/wengshyangen/files/Projects/datasets/NSFW/test/nsfw')
-parser.add_argument('--ad_haze_data_path', type=str,  help='additional Haze image path', default='/Users/wengshyangen/files/Projects/datasets/NSFW/test/nsfw')
-
-parser.add_argument('--val_ori_data_path', type=str, help='Validation origin image path', default='/Users/wengshyangen/files/Projects/datasets/NSFW/test/nsfw')
-parser.add_argument('--val_haze_data_path', type=str,help='Validation haze image path', default='/Users/wengshyangen/files/Projects/datasets/NSFW/test/nsfw')
+parser.add_argument('--val_ori_data_path', type=str, help='Validation origin image path', default='')
+parser.add_argument('--val_haze_data_path', type=str,help='Validation haze image path', default='')
 
 parser.add_argument('--dataset_type', type=str,  help='...', default='LOL-v1')
 parser.add_argument('--ad_dataset_type', type=str,  help='...')
