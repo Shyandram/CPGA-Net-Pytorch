@@ -1,11 +1,11 @@
 # A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction
 
 This is the implementation of CPGA-Net based on Pytorch.  
-Journal Paper (submitted) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](http://arxiv.org/abs/2402.18147)  
+Journal Paper (Under Review) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](./Weng_A_Lightweight_Low_Light_Image_Enhancement_Network_via_Channel_Prior_and_Gamma_Correction.pdf)  
 Conference Paper (submitted) "Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model"  
 
 # News
-* 2024/02/29 Preprint released 
+* 2024/02/29 [Preprint](http://arxiv.org/abs/2402.18147) released
 * 2023/11/17 Upload repository
 # Preparation
 1. clone the project
@@ -30,98 +30,98 @@ Prepare your data, split it into Low-Light images and Normal Light images, both 
 the training of CPGA-DGF (DGF) with knowledge distillation is not available in current version.
 ```
 python train.py  \
-    "--epochs", "10" , \
-    "--net_name", "YOUR_NETNAME" , \
-    "--lr", "1e-4",
+    "--epochs" 10" , \
+    "--net_name" YOUR_NETNAME" , \
+    "--lr" 1e-4",
 
-    "--num_workers", "2" , \
-    "--batch_size", "16" , \
-    "--val_batch_size", "1" , \
+    "--num_workers" 2" , \
+    "--batch_size" 16" , \
+    "--val_batch_size" 1" , \
 
     "--model_dir" ,"./models" , \
-    "--log_dir", "./logs", \
-    "--sample_output_folder", "./samples/", \
+    "--log_dir" ./logs", \
+    "--sample_output_folder" ./samples/", \
 
-    "--ori_data_path", "LOL_TRAIN_HIGH", \
-    "--haze_data_path", "LOL_TRAIN_LOW", \
-    "--val_ori_data_path", "LOL_TEST_HIGH" , \
-    "--val_haze_data_path", "LOL_TEST_LOW" , \
-    "--dataset_type", "LOL-v1", \
+    "--ori_data_path" LOL_TRAIN_HIGH", \
+    "--haze_data_path" LOL_TRAIN_LOW", \
+    "--val_ori_data_path" LOL_TEST_HIGH" , \
+    "--val_haze_data_path" LOL_TEST_LOW" , \
+    "--dataset_type" LOL-v1", \
 
-    "--ckpt", "weights/enhance_color-llie-ResCBAM_g.pkl" 
+    "--ckpt" weights/enhance_color-llie-ResCBAM_g.pkl" 
 ```
 
 ## Demo
 ```
 python demo_enhanced.py \
-     "--net_name", "YOUR_NETNAME" , \
+     "--net_name" YOUR_NETNAME" , \
 
-    "--val_ori_data_path", "LOL_TEST_HIGH" , \
-    "--val_haze_data_path", "LOL_TEST_LOW" , \
-    "--dataset_type", "LOL-v1", \
+    "--val_ori_data_path" LOL_TEST_HIGH" , \
+    "--val_haze_data_path" LOL_TEST_LOW" , \
+    "--dataset_type" LOL-v1", \
     
-    "--num_workers", "1" , \ 
-    "--val_batch_size", "1" , \ 
+    "--num_workers" 1" , \ 
+    "--val_batch_size" 1" , \ 
 
-    "--ckpt", "weights/enhance_color-llie-ResCBAM_g.pkl" 
+    "--ckpt" weights/enhance_color-llie-ResCBAM_g.pkl" 
 ```
 ## Demo Video
 ```
 python demo_enhanced_video.py \
 
-    "--output_name", "OUTPUT_PATH", \
-    "--video_dir", "VIDEO_PATH_or_IMAGE_SEQ_DIR" , \
-    "--num_workers", "0" , \
-    "--val_batch_size", "1", \
+    "--output_name" OUTPUT_PATH", \
+    "--video_dir" VIDEO_PATH_or_IMAGE_SEQ_DIR" , \
+    "--num_workers" 0" , \
+    "--val_batch_size" 1", \
 
-    "--ckpt", "weights/enhance_color-llie-ResCBAM_g.pkl" 
+    "--ckpt" weights/enhance_color-llie-ResCBAM_g.pkl" 
 ```
 ## Evaluation
 ```
 python evaluation.py \
-    "--dirA", "DIR_A", \
-    "--dirB", "DIR_B"
+    "--dirA" DIR_A", \
+    "--dirB" DIR_B"
 ```
 
 ## Dataset Selection
 ### For LOLv2
 ```
-    "--ori_data_path", "LOLv2_PATH", \
-    "--haze_data_path", "LOLv2_PATH", \
-    "--val_ori_data_path", "LOLv2_PATH", \
-    "--val_haze_data_path", "LOLv2_PATH", \
+    "--ori_data_path" LOLv2_PATH", \
+    "--haze_data_path" LOLv2_PATH", \
+    "--val_ori_data_path" LOLv2_PATH", \
+    "--val_haze_data_path" LOLv2_PATH", \
     
-    "--dataset_type", "LOL-v2-real", //"LOL-v2-real" or "LOL-v2-Syn"
+    "--dataset_type" LOL-v2-real", //"LOL-v2-real" or "LOL-v2-Syn"
 ```
 ### For Exposure Error Dataset (Training)
 ```
-    "--ori_data_path", "TRAIN_GT_IMAGES", \
-    "--haze_data_path", "TRAIN_INPUT_IMAGES", \
-    "--val_ori_data_path", "VAL_GT_IMAGES", \
-    "--val_haze_data_path", "VAL_INPUT_IMAGES", \
+    "--ori_data_path" TRAIN_GT_IMAGES", \
+    "--haze_data_path" TRAIN_INPUT_IMAGES", \
+    "--val_ori_data_path" VAL_GT_IMAGES", \
+    "--val_haze_data_path" VAL_INPUT_IMAGES", \
     
-    "--dataset_type", "expe",
+    "--dataset_type" expe",
 ```
 ### For Exposure Error Dataset (Demo)
 ```
-    "--val_ori_data_path", "INPUT_IMAGES_PATH", \
-    "--val_haze_data_path", "INPUT_IMAGES_PATH", \
+    "--val_ori_data_path" INPUT_IMAGES_PATH", \
+    "--val_haze_data_path" INPUT_IMAGES_PATH", \
     
-    "--dataset_type", "LOL-v1",
+    "--dataset_type" LOL-v1",
 ```
 ### For Unpaired Dataset (DEMO: LIME, MEF, DICM, NPE, VV)
 ```
-    "--val_ori_data_path", "Unpaired_PATH" , \
-    "--val_haze_data_path", "Unpaired_PATH" , \
+    "--val_ori_data_path" Unpaired_PATH" , \
+    "--val_haze_data_path" Unpaired_PATH" , \
     
-    "--dataset_type", "LOL-v1",
+    "--dataset_type" LOL-v1",
 ```
 ### For your custom images dir (Demo)
 ```
-    "--val_ori_data_path", "/mnt/d/datasets/exposure error/testing/INPUT_IMAGES",\
-    "--val_haze_data_path", "/mnt/d/datasets/exposure error/testing/INPUT_IMAGES",\
+    "--val_ori_data_path" /mnt/d/datasets/exposure error/testing/INPUT_IMAGES",\
+    "--val_haze_data_path" /mnt/d/datasets/exposure error/testing/INPUT_IMAGES",\
     
-    "--dataset_type", "LOL-v1",
+    "--dataset_type" LOL-v1",
 ```
 ## Weights
 The weights provided are not optimal solutions mentioned in the paper. Only for testing.
@@ -141,8 +141,8 @@ Flops and Inference time per image were using a input with 600×400×3 random ge
 ## LOL-Test(15 pics)
 |      | PSNR (dB)| SSIM  | LPIPS |Flops(G) | Params(M) | Inference Speed|
 | ---- | ----  | ----  |  ---- | ----   | ---- | ---- |
-|  CPGA-Net   |20.00  | 0.714 | 0.284 | 6.0324 |  0.0415  | 28.256 |
-|  CPGA-Net (DGF)   |19.79  | 0.695 | 0.302 | 1.0970 |  0.0184 | 6.090|
+|  CPGA-Net   |20.94  | 0.748 | 0.260 | 6.0324 |  0.0254  | 28.256 |
+|  CPGA-Net (DGF)   |20.31  | 0.701 | 0.291 | 1.0970 |  0.0184 | 6.090|
 
 ![](Img/sample.jpg)
 
@@ -161,7 +161,8 @@ Flops and Inference time per image were using a input with 600×400×3 random ge
 
 # Acknowledge
 Lots of code were borrowed from [pytorch version of AOD-Net](https://github.com/walsvid/AOD-Net-PyTorch)  
-Evaluation code was borrowed from [HWMNet](https://github.com/FanChiMao/HWMNet.git)
+Evaluation code was borrowed from [HWMNet](https://github.com/FanChiMao/HWMNet.git)  
+The efficient version is based on [FastGuidedFilter](https://github.com/wuhuikai/DeepGuidedFilter).
 
 ```
 @misc{weng2024lightweight,

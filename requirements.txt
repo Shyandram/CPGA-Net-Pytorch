@@ -8,3 +8,4 @@ natsort
 scikit-image==0.19.0
 lpips
 torchmetrics
+guided-filter-pytorch
