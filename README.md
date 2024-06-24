@@ -27,7 +27,7 @@ pip install -r requirements.txt
 Prepare your data, split it into Low-Light images and Normal Light images, both image folder should be paired and the same pair of images should be have the same name. It should be almost the same as original listing way.
 
 ## Train
-the training of CPGA-DGF (DGF) with knowledge distillation is not available in current version.
+The training of CPGA-DGF (DGF) with knowledge distillation is not available in current version.
 ```
 python train.py  \
     "--epochs" 10" , \
@@ -49,6 +49,8 @@ python train.py  \
     "--dataset_type" LOL-v1", \
 
     "--ckpt" weights/enhance_color-llie-ResCBAM_g.pkl" 
+
+    "--efficient" //DGF version
 ```
 
 ## Demo
@@ -64,6 +66,8 @@ python demo_enhanced.py \
     "--val_batch_size" 1" , \ 
 
     "--ckpt" weights/enhance_color-llie-ResCBAM_g.pkl" 
+
+    "--efficient" //DGF version
 ```
 ## Demo Video
 ```
@@ -158,6 +162,9 @@ Flops and Inference time per image were using a input with 600×400×3 random ge
 | ---- | ----  | ----  |  ---- | ---- |
 |  CPGA-Net   | 19.90  | 0.809 | 0.184 | 2.428 |
 
+# EdgeAI
+[CPGA-Net for EdgeAI (Jetson Nano)](https://github.com/Shyandram/EdgeAI_LLIE-Jetson-Nano)  
+[CPGA-Net for EdgeAI (neural compute stick 2)](https://github.com/Shyandram/EdgeAI_LLIE_NCS2.git)
 
 # Acknowledge
 Lots of code were borrowed from [pytorch version of AOD-Net](https://github.com/walsvid/AOD-Net-PyTorch)  

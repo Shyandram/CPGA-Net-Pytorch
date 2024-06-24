@@ -36,14 +36,11 @@ def load_data_eval(cfg):
     return val_loader, len(val_loader)
 
 
-def load_network(device):
-    net = enhance_color().to(device)
-    net.apply(weight_init)
-    return net
-
-
 def load_pretrain_network(cfg, device):
-    net = enhance_color().to(device)
+    if cfg.efficient:
+        net = enhance_color(n_channels=8, isdgf=True).to(device)
+    else:
+        net = enhance_color().to(device)
     net.load_state_dict(torch.load(os.path.join(cfg.ckpt))['state_dict'])
     return net
 
@@ -73,7 +70,7 @@ def main(cfg):
     if cfg.ckpt:
         network = load_pretrain_network(cfg, device)
     else:
-        network = load_network(cfg.upscale_factor, device)
+        raise ValueError('No checkpoint found')
     
     # -------------------------------------------------------------------
     out_dir = os.path.join('results', cfg.net_name)
@@ -93,27 +90,6 @@ def main(cfg):
             LLIE_image = LLIE_image.permute(0, 2, 3, 1).cpu().detach().numpy()
             LLIE_image = img_as_ubyte(LLIE_image[0])
             save_img((os.path.join(out_dir, name[0])), LLIE_image)
-            
-            
-            # intersection = abs(intersection.permute(0, 2, 3, 1).cpu().detach().numpy())
-            # intersection = img_as_ubyte(intersection[0])
-            # save_img((os.path.join(out_dir, 'intersection'+name[0])), intersection)
-            
-            # out_g = out_g.permute(0, 2, 3, 1).cpu().detach().numpy()
-            # out_g = img_as_ubyte(out_g[0])
-            # save_img((os.path.join(out_dir, 'out_g'+name[0])), out_g)
-            
-            # llie = llie.permute(0, 2, 3, 1).cpu().detach().numpy()
-            # llie = img_as_ubyte(llie[0])
-            # save_img((os.path.join(out_dir, 'llie'+name[0])), llie)
-            
-            # t = t.permute(0, 2, 3, 1).cpu().detach().numpy()
-            # t = img_as_ubyte(t[0])
-            # save_img((os.path.join(out_dir, 't'+name[0])), t)
-            
-            # A = A.permute(0, 2, 3, 1).cpu().detach().numpy()
-            # A = img_as_ubyte(A[0])
-            # save_img((os.path.join(out_dir, 'A'+name[0])), A)
             
             
     total_time = 0

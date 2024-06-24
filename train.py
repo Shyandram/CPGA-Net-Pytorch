@@ -53,16 +53,18 @@ def save_model(epoch, path, net, optimizer, net_name):
 
 
 # @logger
-def load_network(device):
-    net = enhance_color().to(device)
-    net.apply(weight_init)
+def load_network(cfg, device):
+    if cfg.efficient:
+        net = enhance_color(n_channels=8, isdgf=True).to(device)
+    else:
+        net = enhance_color().to(device)
+    if cfg.ckpt:
+        net.load_state_dict(torch.load(os.path.join(cfg.ckpt))['state_dict'])
+    else:
+        net.apply(weight_init)
+        print('No pretrain model, train from scratch')
     return net
 
-
-def load_pretrain_network(cfg, device):
-    net = enhance_color().to(device)
-    net.load_state_dict(torch.load(os.path.join(cfg.ckpt))['state_dict'])
-    return net
 
 # @logger
 def load_optimizer(net, cfg):
@@ -102,9 +104,7 @@ def main(cfg):
     # -------------------------------------------------------------------
     # load network
     if cfg.ckpt:
-        network = load_pretrain_network(cfg, device)
-    else:
-        network = load_network(device)
+        network = load_network(cfg, device)
     print('Total params: ', sum(p.numel() for p in network.parameters() if p.requires_grad))
     # -------------------------------------------------------------------
     # load optimizer

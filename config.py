@@ -34,6 +34,8 @@ parser.add_argument('--log_dir', type=str, default='./log')
 parser.add_argument('--ckpt', type=str, default='weights/enhance_expe.pkl')
 parser.add_argument('--video_dir', type=str,  help='...')
 
+parser.add_argument('--efficient', type=str2bool, default=False, help='Use efficient (DGF) version')
+
 
 
 def get_config():
