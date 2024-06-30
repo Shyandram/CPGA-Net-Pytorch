@@ -1,7 +1,7 @@
 # A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction
 
 This is the implementation of CPGA-Net based on Pytorch.  
-Journal Paper (Under Review) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](./Weng_A_Lightweight_Low_Light_Image_Enhancement_Network_via_Channel_Prior_and_Gamma_Correction.pdf)  
+Journal Paper (Under Review) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](https://drive.google.com/file/d/172KE8J0QgAnlqyOmiptBUQhUgKyMbXol/view?usp=sharing)  
 Conference Paper (submitted) "Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model"  
 
 # News
