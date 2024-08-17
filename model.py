@@ -323,3 +323,4 @@ if __name__ == '__main__':
     x = torch.randn(8, 3, 600, 400)
     model = enhance_color()
     model(x)
+    print('Total params: ', sum(p.numel() for p in model.parameters() if p.requires_grad))

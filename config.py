@@ -29,12 +29,15 @@ parser.add_argument('--epochs', type=int, default=10, help='number of epochs for
 
 parser.add_argument('--output_name', type=str,  help='...')
 parser.add_argument('--sample_output_folder', type=str, default='samples',  help='Validation haze image path')
-parser.add_argument('--model_dir', type=str, default='./model')
-parser.add_argument('--log_dir', type=str, default='./log')
-parser.add_argument('--ckpt', type=str, default='weights/enhance_expe.pkl')
+parser.add_argument('--model_dir', type=str, default='models',  help='...')
+parser.add_argument('--log_dir', type=str, default='logs')
+parser.add_argument('--ckpt', type=str, default=None,  help='weights/enhance_expe.pkl')
 parser.add_argument('--video_dir', type=str,  help='...')
 
 parser.add_argument('--efficient', type=str2bool, default=False, help='Use efficient (DGF) version')
+
+parser.add_argument('--skipSST', type=str2bool, default=False, help='Skip self-supervised training')
+parser.add_argument('--SSTepochs', type=int, default=20, help='Number of epochs for self-supervised training')
 
 
 

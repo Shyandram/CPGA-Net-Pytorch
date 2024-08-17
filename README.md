@@ -4,6 +4,9 @@ This is the implementation of CPGA-Net based on Pytorch.
 Journal Paper (Under Review) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](https://drive.google.com/file/d/172KE8J0QgAnlqyOmiptBUQhUgKyMbXol/view?usp=sharing)  
 Conference Paper (submitted) "Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model"  
 
+# Todo
+- Add `train_efficient` with distillation
+
 # News
 * 2024/02/29 [Preprint](http://arxiv.org/abs/2402.18147) released
 * 2023/11/17 Upload repository
