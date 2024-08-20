@@ -1,1 +1,7 @@
 /.DS_Store
+samples/
+runs/
+results/
+models/
+logs/
+*.pyc
