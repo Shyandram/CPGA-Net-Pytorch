@@ -1,8 +1,8 @@
 # A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction
 
 This is the implementation of CPGA-Net based on Pytorch.  
-Journal Paper (Under Review) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](https://drive.google.com/file/d/172KE8J0QgAnlqyOmiptBUQhUgKyMbXol/view?usp=sharing)  
-Conference Paper (submitted) "Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model"  
+Journal Paper (Under Review, ArXiV) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](https://drive.google.com/file/d/172KE8J0QgAnlqyOmiptBUQhUgKyMbXol/view?usp=sharing)  
+Conference Paper (IEEE ICCE-TW) [Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model](https://ieeexplore.ieee.org/document/10674535)  
 
 # News
 * 2024/02/29 [Preprint](http://arxiv.org/abs/2402.18147) released
@@ -172,12 +172,18 @@ Evaluation code was borrowed from [HWMNet](https://github.com/FanChiMao/HWMNet.g
 The efficient version is based on [FastGuidedFilter](https://github.com/wuhuikai/DeepGuidedFilter).
 
 ```
-@misc{weng2024lightweight,
-      title={A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction}, 
-      author={Shyang-En Weng and Shaou-Gang Miaou and Ricky Christanto},
-      year={2024},
-      eprint={2402.18147},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV}
+@article{weng2024lightweight,
+  title={A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction},
+  author={Weng, Shyang-En and Miaou, Shaou-Gang and Christanto, Ricky},
+  journal={arXiv preprint arXiv:2402.18147},
+  year={2024}
+}
+@inproceedings{weng2024exposure,
+  title={Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model},
+  author={Weng, Shyang-En and Miaou, Shaou-Gang and Christanto, Ricky and Hsu, Chang-Pin},
+  booktitle={2024 International Conference on Consumer Electronics-Taiwan (ICCE-Taiwan)},
+  pages={493--494},
+  year={2024},
+  organization={IEEE}
 }
 ```
