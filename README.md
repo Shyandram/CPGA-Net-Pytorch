@@ -1,10 +1,11 @@
 # A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction
 
 This is the implementation of CPGA-Net based on Pytorch.  
-Journal Paper (Under Review, ArXiV) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](https://drive.google.com/file/d/172KE8J0QgAnlqyOmiptBUQhUgKyMbXol/view?usp=sharing)  
+Journal Paper (Accept, IJPRAI) [A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction](https://doi.org/10.1142/S0218001425540138)  
 Conference Paper (IEEE ICCE-TW) [Exposure Correction in Driving Scenes Using the Atmospheric Scattering Model](https://ieeexplore.ieee.org/document/10674535)  
 
 # News
+* 2025/07/21 Accepted by International Journal of Pattern Recognition and Artificial Intelligence (IJRAI)
 * 2024/02/29 [Preprint](http://arxiv.org/abs/2402.18147) released
 * 2023/11/17 Upload repository
 # Preparation
@@ -131,7 +132,8 @@ python evaluation.py \
 The weights provided are not optimal solutions mentioned in the paper. Only for testing.
 CPGA-Net
 ```
-weights/enhance_color-llie-ResCBAM_g.pkl
+weights/enhance_color-llie-ResCBAM_g-LOLv1.pkl
+weights/enhance_color-llie-ResCBAM_g-vggloss-LOLv2.pkl
 ```
 CPGA-Net (DGF)
 ```
@@ -172,6 +174,19 @@ Evaluation code was borrowed from [HWMNet](https://github.com/FanChiMao/HWMNet.g
 The efficient version is based on [FastGuidedFilter](https://github.com/wuhuikai/DeepGuidedFilter).
 
 ```
+@article{doi:10.1142/S0218001425540138,
+author = {Weng, Shyang-En and Miaou, Shaou-Gang and Christanto, Ricky},
+title = {A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction},
+journal = {International Journal of Pattern Recognition and Artificial Intelligence},
+volume = {0},
+number = {ja},
+pages = {null},
+year = {0},
+doi = {10.1142/S0218001425540138},
+URL = {https://doi.org/10.1142/S0218001425540138},
+eprint = { https://doi.org/10.1142/S0218001425540138}
+}
+
 @article{weng2024lightweight,
   title={A Lightweight Low-Light Image Enhancement Network via Channel Prior and Gamma Correction},
   author={Weng, Shyang-En and Miaou, Shaou-Gang and Christanto, Ricky},
